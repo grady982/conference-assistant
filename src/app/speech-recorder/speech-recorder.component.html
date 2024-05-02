@@ -1,0 +1,8 @@
+<div>
+  <button (click)="startRecording()" [disabled]="isRecording">Start Recording</button>
+  <button (click)="stopRecording()" [disabled]="!isRecording">Stop Recording</button>
+</div>
+<div>
+  <h5>Result:</h5>
+  <textarea [(ngModel)]="recordedText" rows="10" cols="50" readonly></textarea>
+</div>

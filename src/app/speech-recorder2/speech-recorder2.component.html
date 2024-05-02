@@ -1,0 +1,5 @@
+<div>
+    <button (click)="startRecording()" [disabled]="isRecording">Start Recording</button>
+    <button (click)="stopRecording()" [disabled]="!isRecording">Stop Recording</button>
+    <button (click)="saveRecording()" [disabled]="!recordedAudio">Save Recording</button>
+  </div>
