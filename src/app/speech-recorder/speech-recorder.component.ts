@@ -17,7 +17,7 @@ export class SpeechRecorderComponent {
   ) {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     this.recognition = new SpeechRecognition();
-    this.recognition.lang = 'en-US';
+    this.recognition.lang = 'zh-TW';
     this.recognition.interimResults = false;
     this.recognition.maxAlternatives = 1;
   }
@@ -25,6 +25,10 @@ export class SpeechRecorderComponent {
   startRecording() {
     this.isRecording = true;
     this.recognition.start();
+
+    this.recognition.onstart = (data: any) => {
+      console.log('Speech recognition service has started', data);
+    };
 
     this.recognition.onresult = (event: any) => {
       const transcript = event.results[0][0].transcript;
