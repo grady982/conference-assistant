@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SpeechRecorderComponent } from './speech-recorder/speech-recorder.component';
 import { FormsModule } from '@angular/forms';
 import { SpeechRecorder2Component } from './speech-recorder2/speech-recorder2.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SpeechRecorder2Component } from './speech-recorder2/speech-recorder2.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
