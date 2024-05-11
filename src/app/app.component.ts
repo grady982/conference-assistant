@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingService } from './core/loading.service';
+import { OpenaiService } from './core/openai.service';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,11 @@ export class AppComponent implements OnInit {
 
   fileName: string = 'please chose file..';
   speechToText: string = '';
+  summary: string = '';
 
   constructor(
-    private loading: LoadingService
+    private loading: LoadingService,
+    private openai: OpenaiService
   ) {}
 
   ngOnInit(): void {
@@ -26,11 +29,22 @@ export class AppComponent implements OnInit {
 
   onFileSelected(event: any) {
     this.loading.open();
-    setTimeout(() => {
-      this.fileName = event.target.files[0].name;
-      this.speechToText = 'This is a sample text from the speech to text conversion';
+
+    const formData = new FormData();
+    formData.append('file', event);
+    
+    this.fileName = event.target.files[0].name;
+    this.speechToText = 'How is the weather today?';
+
+    this.openai.getSpeechToText().subscribe(response => {
       this.loading.close();
-    }, 2000);
+      this.speechToText = response.choices[0].text;
+    });
+
+    this.openai.getCompletion(this.speechToText).subscribe(response => {
+      this.loading.close();
+      this.summary = response.choices[0].message.content;
+    });
 
   }
 
