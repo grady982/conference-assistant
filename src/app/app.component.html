@@ -1,10 +1,35 @@
-<div class="pageContainer">
-  <div>
-    <h2>Speech Recorder</h2>
-    <app-speech-recorder></app-speech-recorder>
+<app-loading *ngIf="isLoading"></app-loading>
+<div class="header">
+  <h1>{{ title }}</h1>
+</div>
+<div class="content">
+
+  <div class="container">
+    <div class="row">
+      <div class="w30">
+        <h1>{{ fileName }}</h1>
+        <input #uploadFile type="file" style="display: none;" (change)="onFileSelected($event)" />
+        <button mat-raised-button color="primary" (click)="uploadFile.click()">
+          Upload
+        </button>
+      </div>
+      
+      <div class="w70">
+        <h1>Speech To Text</h1>
+        <div class="block">
+
+        </div>
+      </div>
+    </div>
+    <div class="row mt20">
+      <div class="w100">
+        <h1>Summarize Generation</h1>
+        <div class="block w100">
+          
+        </div>
+      </div>
+      
+    </div>
   </div>
-  <div>
-    <h2>Speech Recorder2</h2>
-    <app-speech-recorder2></app-speech-recorder2>
-  </div>
+  
 </div>

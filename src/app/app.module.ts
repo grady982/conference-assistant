@@ -7,6 +7,14 @@ import { SpeechRecorderComponent } from './speech-recorder/speech-recorder.compo
 import { FormsModule } from '@angular/forms';
 import { SpeechRecorder2Component } from './speech-recorder2/speech-recorder2.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from "@angular/material/button";
+import { SharedModule } from './shared/shared.module';
+
+const MAT_MODULES = [
+  MatInputModule,
+  MatButtonModule
+];
 
 @NgModule({
   declarations: [
@@ -18,7 +26,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule,
+    ...MAT_MODULES
   ],
   providers: [],
   bootstrap: [AppComponent]
