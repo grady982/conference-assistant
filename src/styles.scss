@@ -24,7 +24,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .content {
     margin-top: 56px;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,6 +36,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .container {
     margin-top: 60px;
     width: 80%;
+    height: 100%;
 }
 
 .row {
@@ -58,13 +59,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mt20 {
     margin-top: 20px;
 }
+.mb20 {
+    margin-bottom: 20px;
+}
 
 .block {
     border: solid 3px #4e444b;
     border-radius: 12px;
 
     color: #d1c2cb;
-    min-height: 250px;
+    min-height: 100px;
+    max-height: 450px;
+    overflow-y: scroll;
 
     padding: 2rem;
     font-size: 1rem;

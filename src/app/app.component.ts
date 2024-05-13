@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'Webcomm Conference Assistant';
   isLoading: boolean = false;
 
-  fileName: string = 'please chose file..';
+  fileName: string = 'choose a file...';
   speechToText: string = '';
   summary: string = '';
 
@@ -27,24 +27,25 @@ export class AppComponent implements OnInit {
     });
   }
 
-  onFileSelected(event: any) {
+  async onFileSelected(event: any) {
     this.loading.open();
 
-    const formData = new FormData();
-    formData.append('file', event);
-    
     this.fileName = event.target.files[0].name;
-    this.speechToText = 'How is the weather today?';
 
-    this.openai.getSpeechToText().subscribe(response => {
+    // --
+    const file = event.target.files[0];
+    console.log('file', file);
+    this.openai.transcribeAudio(file).subscribe(response => {
       this.loading.close();
-      this.speechToText = response.choices[0].text;
+      // this.speechToText = response.choices[0].text;
+    }, (error) => {
+      this.loading.close();
+      console.warn('error', error);
     });
 
-    this.openai.getCompletion(this.speechToText).subscribe(response => {
-      this.loading.close();
-      this.summary = response.choices[0].message.content;
-    });
+  }
+
+  convertFileAsBlob() {
 
   }
 
