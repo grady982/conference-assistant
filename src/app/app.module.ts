@@ -12,10 +12,12 @@ import { MatButtonModule } from "@angular/material/button";
 import { SharedModule } from './shared/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth.interceptor';
+import { MatIconModule } from '@angular/material/icon';
 
 const MAT_MODULES = [
   MatInputModule,
-  MatButtonModule
+  MatButtonModule,
+  MatIconModule
 ];
 
 @NgModule({
@@ -34,11 +36,11 @@ const MAT_MODULES = [
     ...MAT_MODULES
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

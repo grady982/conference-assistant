@@ -55,8 +55,4 @@ export class AppComponent implements OnInit {
 
   }
 
-  convertFileAsBlob() {
-
-  }
-
 }
